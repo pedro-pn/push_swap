@@ -1,0 +1,5 @@
+objs/
+*.out
+push_swap
+teste.c
+libft/libft.a
