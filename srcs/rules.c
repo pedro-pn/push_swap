@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 21:40:36 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/07/25 23:11:05 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/07/26 12:02:49 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,24 @@ void	push(t_list **dest, t_list **src)
 	ft_lstdelone(temp, free);
 }
 
-// ra (shift up) = just swap through the list
-// rra (shift down) = just swap through the list in reverse
+void	rotate(t_list **stack)
+{
+	t_list	*temp;
+
+	temp = *stack;
+	while (temp->next)
+	{
+		swap(&temp);
+		temp = temp->next;
+	}
+}
+
+void	reverse_rotate(t_list **stack)
+{
+	t_list	*temp;
+
+	temp = *stack;
+	if (temp->next->next)
+		reverse_rotate(&(temp->next));
+	swap(&temp);
+}
