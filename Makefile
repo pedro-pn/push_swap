@@ -1,4 +1,4 @@
-SOURCES = main.c args.c error.c
+SOURCES = main.c args.c error.c rules.c
 NAME = push_swap
 LIBFT = libft/libft.a
 SRCS_PATH = srcs
@@ -28,5 +28,4 @@ fclean: clean
 re: fclean all
 
 norma:
-		make norma -C libft/
 		norminette ${SRCS} include/
