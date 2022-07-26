@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 14:16:54 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/07/25 18:22:09 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/07/26 13:26:09 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static int	check_nums(char *str);
 static int	check_max(char *str);
 static int	check_max_2(char *str, int flag);
+static void	check_duplicate(t_list **stack);
 
 void	get_args(t_list **stack_a, int argc, char *argv[])
 {
@@ -40,6 +41,7 @@ void	get_args(t_list **stack_a, int argc, char *argv[])
 		ft_lstadd_back(stack_a, node);
 		index++;
 	}
+	check_duplicate(stack_a);
 }
 
 static int	check_nums(char *str)
@@ -96,4 +98,26 @@ static int	check_max(char *str)
 	else if (str_len == 10)
 		ret = check_max_2(str, flag);
 	return (ret);
+}
+
+static void	check_duplicate(t_list **stack)
+{
+	t_list	*temp;
+	t_list	*temp_2;
+
+	temp = *stack;
+	while (temp)
+	{
+		temp_2 = temp->next;
+		while (temp_2)
+		{
+			if (*(int *)temp->content == *(int *)temp_2->content)
+			{
+				ft_lstclear(stack, free);
+				error_handle(EDUPLI);
+			}
+			temp_2 = temp_2->next;
+		}
+		temp = temp->next;
+	}	
 }

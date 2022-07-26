@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 15:18:53 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/07/25 17:11:51 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/07/26 13:27:04 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,7 @@ void	error_handle(int code)
 		write(STDERR_FILENO, "Int overflow detected!\n", 23);
 	else if (code == NOTDIGIT)
 		write(STDERR_FILENO, "Only integers are valid!\n", 25);
+	else if (code == EDUPLI)
+		write(STDERR_FILENO, "Duplicates are not allowed!\n", 28);
 	exit(EXIT_FAILURE);
 }
