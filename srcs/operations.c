@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 21:40:36 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/07/26 17:04:07 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/07/27 13:38:12 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void	swap(t_list **stack, char *id)
 {
 	void	*temp;
 
+	if (id)
+		ft_printf("%s\n", id);
 	if (ft_lstsize(*stack) < 1)
 		return ;
 	temp = (*stack)->content;
 	(*stack)->content = (*stack)->next->content;
 	(*stack)->next->content = temp;
-	if (id)
-		ft_printf("%s\n", id);
 }
 
 void	push(t_list **dest, t_list **src, char *id)
@@ -31,6 +31,8 @@ void	push(t_list **dest, t_list **src, char *id)
 	t_list	*node;
 	int		*content;
 	
+	if (id)
+		ft_printf("%s\n", id);
 	if (!*src)
 		return ;
 	content = malloc(sizeof(*content));
@@ -43,22 +45,22 @@ void	push(t_list **dest, t_list **src, char *id)
 	temp = (*src);
 	(*src) = (*src)->next;
 	ft_lstdelone(temp, free);
-	if (id)
-		ft_printf("%s\n", id);
 }
 
 void	rotate(t_list **stack, char *id)
 {
 	t_list	*temp;
 
+	if (id)
+		ft_printf("%s\n", id);
+	if (!*stack)
+		return ;
 	temp = *stack;
 	while (temp->next)
 	{
 		swap(&temp, NULL);
 		temp = temp->next;
 	}
-	if (id)
-		ft_printf("%s\n", id);
 }
 
 void	reverse_rotate(t_list **stack, char *id)
@@ -66,9 +68,11 @@ void	reverse_rotate(t_list **stack, char *id)
 	t_list	*temp;
 
 	temp = *stack;
+	if (id)
+		ft_printf("%s\n", id);
+	if (ft_lstsize(*stack) < 2)
+		return ;
 	if (temp->next->next)
 		reverse_rotate(&(temp->next), NULL);
 	swap(&temp, NULL);
-	if (id && !temp->next->next)
-		ft_printf("%s\n", id);
 }
