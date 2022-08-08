@@ -1,4 +1,5 @@
-SOURCES = main.c args.c error.c operations.c instructions.c sort.c
+SOURCES =	main.c args.c error.c operations.c instructions.c sort.c \
+			stack_sort_1.c
 NAME = push_swap
 LIBFT = libft/libft.a
 SRCS_PATH = srcs
