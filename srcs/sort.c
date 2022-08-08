@@ -6,29 +6,31 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 12:42:29 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/08/08 13:16:06 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/08 15:03:09 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	*get_array(int argc, char *argv[]);
+static int	*get_array(t_list *stack_a, int stack_len);
 static void	swap_array(int *a, int *b);
 
-int	*sort_array(int argc, char *argv[])
+int	*sort_array(t_list *stack_a)
 {
 	int	*array;
+	int	length;
 	int	index;
 	int	flag;
 
-	array = get_array(argc, argv);
+	length = ft_lstsize(stack_a);
+	array = get_array(stack_a, length);
 	if (!array)
 		return (NULL);
 	index = 0;
 	flag = 0;
-	while (flag != argc - 2)
+	while (flag != length - 1)
 	{
-		if (index == argc - 2)
+		if (index == length - 1)
 		{
 			index = 0;
 			flag = 0;
@@ -42,22 +44,20 @@ int	*sort_array(int argc, char *argv[])
 	return (array);
 }
 
-static int	*get_array(int argc, char *argv[])
+static int	*get_array(t_list *stack_a, int stack_len)
 {
 	int	*array;
-	int	index;
 	int	array_index;
 
-	array = malloc(sizeof(*array) * (argc - 1));
+	array = malloc(sizeof(*array) * (stack_len));
 	if (!array)
 		return (NULL);
-	index = 1;
 	array_index = 0;
-	while (index < argc)
+	while (stack_a)
 	{
-		array[array_index] = ft_atoi(argv[index]);
-		index++;
+		array[array_index] = *((int *)stack_a->content);
 		array_index++;
+		stack_a = stack_a->next;
 	}
 	return (array);
 }
