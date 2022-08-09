@@ -7,7 +7,7 @@ OBJS_PATH = objs
 SRCS = ${addprefix ${SRCS_PATH}/, ${SOURCES}}
 OBJS = ${addprefix ${OBJS_PATH}/, ${SOURCES:.c=.o}}
 CC = gcc
-FLAGS = -Werror -Wall -Wextra -g
+FLAGS =  -g
 
 all: ${NAME}
 
