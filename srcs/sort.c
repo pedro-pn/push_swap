@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 12:42:29 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/08/08 15:03:09 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/08 17:09:06 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,12 @@
 static int	*get_array(t_list *stack_a, int stack_len);
 static void	swap_array(int *a, int *b);
 
-int	*sort_array(t_list *stack_a)
+int	*sort_array(t_list *stack_a, int length)
 {
 	int	*array;
-	int	length;
 	int	index;
 	int	flag;
 
-	length = ft_lstsize(stack_a);
 	array = get_array(stack_a, length);
 	if (!array)
 		return (NULL);
@@ -53,11 +51,12 @@ static int	*get_array(t_list *stack_a, int stack_len)
 	if (!array)
 		return (NULL);
 	array_index = 0;
-	while (stack_a)
+	while (stack_len > 0)
 	{
 		array[array_index] = *((int *)stack_a->content);
 		array_index++;
 		stack_a = stack_a->next;
+		stack_len--;
 	}
 	return (array);
 }
