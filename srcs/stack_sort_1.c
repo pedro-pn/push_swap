@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 13:34:29 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/08/09 15:10:23 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/09 16:37:02 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void split_stack(t_list **stack_a, t_list **stack_b, int *array, int len)
 	int	push_count;
 	int	*array_b;
 
+	array_b = NULL;
 	middle = array[len / 2];
 	push_count = 0;
 	while (check_stack(*stack_a, middle))
@@ -37,14 +38,14 @@ void split_stack(t_list **stack_a, t_list **stack_b, int *array, int len)
 			rotate(stack_a, "ra");
 	}
 	free(array);
-	array = sort_array(*stack_a, ft_lstsize(*stack_a));
-	array_b = sort_array(*stack_b, push_count);
-	//printf_reverse(array_b, push_count);
+	array = NULL;
 	if (push_count > 1)
 	{
+		array = sort_array(*stack_a, ft_lstsize(*stack_a));
+		array_b = sort_array(*stack_b, push_count);
 		split_stack(stack_a, stack_b, array, ft_lstsize(*stack_a));
 		rev_split_stack(stack_a, stack_b, array_b, push_count);
-
+		free(array_b);
 	}
 	else
 	{
@@ -55,7 +56,6 @@ void split_stack(t_list **stack_a, t_list **stack_b, int *array, int len)
 		}
 		push(stack_a, stack_b, "pa");
 	}
-	
 }
 
 void	rev_split_stack(t_list **stack_a, t_list **stack_b, int *array, int len)
@@ -69,8 +69,8 @@ void	rev_split_stack(t_list **stack_a, t_list **stack_b, int *array, int len)
 	middle = array[len / 2];
 	rb_count = 0;
 	push_count = 0;
-	//printf_reverse(array, len);
-//	ft_printf("len: %d\n", len);
+	array_a = NULL;
+	array_b = NULL;
 	if (len == 1)
 	{
 		push(stack_a, stack_b, "pa");
@@ -90,7 +90,6 @@ void	rev_split_stack(t_list **stack_a, t_list **stack_b, int *array, int len)
 	{
 		if (*((int *)(*stack_b)->content) > middle)
 		{
-		//	ft_printf("cara: %d\n", *((int *)(*stack_b)->content));
 			push(stack_a, stack_b, "pa");
 			push_count++;
 		}
@@ -118,6 +117,12 @@ void	rev_split_stack(t_list **stack_a, t_list **stack_b, int *array, int len)
 		array_b = sort_array(*stack_b, len - push_count);
 		rev_split_stack(stack_a, stack_b, array_b, len - push_count);
 	}
+	if (array_a)
+		free(array_a);
+	if (array_b)
+		free(array_b);
+	array_a = NULL;
+	array_b = NULL;
 }
 
 void	chunck_a(t_list **stack_a, t_list **stack_b, int *array, int len)
@@ -130,17 +135,13 @@ void	chunck_a(t_list **stack_a, t_list **stack_b, int *array, int len)
 	int index;
 	int limit;
 	
-	//ft_printf("chunck_a: ");
-	//printf_reverse(array, len);
 	middle = array[len / 2];
 	ra_count = 0;
 	push_count = 0;
 	index = 0;
+	array_a = NULL;
+	array_b = NULL;
 	limit = len - ((len - 1) - (len / 2));
-	// if (len == 1)
-	// {
-	// 	push(stack_)
-	// }
 	while (check_stack(*stack_a, middle))
 	{
 		if (*((int *)(*stack_a)->content) < middle)
@@ -152,11 +153,9 @@ void	chunck_a(t_list **stack_a, t_list **stack_b, int *array, int len)
 		else
 		{
 			rotate(stack_a, "ra");
-		//	ft_printf("middle: %d, content: %d\n", middle, *((int *)(*stack_a)->content));
 			ra_count++;
 		}
 	}
-//	ft_printf("oiiiii\n");
 	while (ra_count > 0)
 	{
 		reverse_rotate(stack_a, "rra");
@@ -167,42 +166,19 @@ void	chunck_a(t_list **stack_a, t_list **stack_b, int *array, int len)
 		array_a = sort_array(*stack_a, len - push_count);
 		chunck_a(stack_a, stack_b, array_a, len - push_count);
 	}
-	//CHAMAR CHUNK A
 	if (len - push_count == 2)
 	{
 		if (*((int *)(*stack_a)->content) > *((int *)(*stack_a)->next->content))
 			swap(stack_a, "sa");
 	}
-	//if (push_count >= 2)
-	//{
-		array_b = sort_array(*stack_b, push_count);
-		rev_split_stack(stack_a, stack_b, array_b, push_count);
-	//}
-	// if (push_count == 1) // ou len-push_count > 2
-	// {
-	// 	array_a = sort_array(*stack_a, len - push_count);
-	// 	chunck_a(stack_a, stack_b, array_a, len - push_count);
-	// }
-	// if (len - push_count > 2)
-	// {
-	// 	array_a = sort_array(*stack_a, len - push_count);
-	// 	chunck_a(stack_a, stack_b, array_a, len - push_count);
-	// }
-	// else if (len - push_count == 2)
-	// {
-	// 	if (*((int *)(*stack_a)->content) > *((int *)(*stack_a)->next->content))
- 	// 	swap(stack_a, "sa");
-	// }
-	// if (push_count > 2)
-	// {
-	// 	array_b = sort_array(*stack_b, push_count);
-	// 	rev_split_stack(stack_a, stack_b, array_b, push_count);
-	// }
-	// else if (push_count == 1)
-	// {
-	// 	if (*((int *)(*stack_a)->content) > *((int *)(*stack_a)->next->content))
-	// 		swap(stack_a, "sa");
-	// }
+	array_b = sort_array(*stack_b, push_count);
+	rev_split_stack(stack_a, stack_b, array_b, push_count);
+	if (array_a)
+		free(array_a);
+	if (array_b)
+		free(array_b);
+	array_a = NULL;
+	array_b = NULL;
 }
 
 static int	check_stack(t_list *stack, int middle)
