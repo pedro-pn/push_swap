@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 14:16:54 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/07/26 13:26:09 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/10 15:13:54 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ void	get_args(t_list **stack_a, int argc, char *argv[])
 {
 	int		index;
 	int		check_code;
-	int		*content;
-	t_list	*node;
 
 	if (argc < 2)
 		error_handle(UNSARG);
@@ -35,10 +33,11 @@ void	get_args(t_list **stack_a, int argc, char *argv[])
 			ft_lstclear(stack_a, free);
 			error_handle(check_code);
 		}
-		content = malloc(sizeof(*content));
-		*content = ft_atoi(argv[index]);
-		node = ft_lstnew(content);
-		ft_lstadd_back(stack_a, node);
+		if (create_node(stack_a, argv[index]))
+		{
+			ft_lstclear(stack_a, free);
+			return ;
+		}
 		index++;
 	}
 	check_duplicate(stack_a);
