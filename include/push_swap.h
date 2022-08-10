@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 14:15:57 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/08/09 21:49:58 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/10 11:31:11 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # define NOTDIGIT 2
 # define INTOVER 3
 # define EDUPLI 4
+# define LESS 0
+# define GREATER 1
 
 void	get_args(t_list **stack_a, int argc, char *argv[]);
 void	error_handle(int code);
@@ -37,9 +39,9 @@ int		rev_len_checker(t_list **stack_a, t_list **stack_b, int len);
 int		rev_mid_point(t_list **stack_a, t_list **stack_b, int *array, int len);
 int		rev_check_stack(t_list *stack, int middle);
 void	restore_stack(t_list **stack, int count, char *rule);
-void	rev_sort_chunk(t_list **stack_a, t_list **stack_b, int len, int count);
 void	chunck_a(t_list **stack_a, t_list **stack_b, int *array, int len);
 int		mid_point_2(t_list **stack_a, t_list **stack_b, int *array, int len);
-int		check_stack(t_list *stack, int middle);
+int		check_stack(t_list *stack, int middle, int op);
+void	sort_chunk_2(t_list **stack_a, t_list **stack_b, int len, int count);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 21:43:22 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/08/09 21:47:59 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/10 11:31:47 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	mid_point_2(t_list **stack_a, t_list **stack_b, int *array, int len)
 	ra_count = 0;
 	middle = array[len / 2];
 	push_count = 0;
-	while (check_stack(*stack_a, middle))
+	while (check_stack(*stack_a, middle, LESS))
 	{
 		if (*((int *)(*stack_a)->content) < middle)
 		{
