@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 15:18:53 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/08/10 13:36:00 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/10 17:26:48 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,8 @@
 
 void	error_handle(int code)
 {
-	if (code == UNSARG)
-		write(STDERR_FILENO, "Insuficient number of arguments\n", 32);
-	else if (code == INTOVER)
-		write(STDERR_FILENO, "Int overflow detected!\n", 23);
-	else if (code == NOTDIGIT)
-		write(STDERR_FILENO, "Only integers are valid!\n", 25);
-	else if (code == EDUPLI)
-		write(STDERR_FILENO, "Duplicates are not allowed!\n", 28);
-	else if (code == FALLOC)
-		write(STDERR_FILENO, "Failed to allocate memory.\n", 27);
+	if (code != UNSARG)
+		write(STDERR_FILENO, "Error\n", 6);
 	exit(EXIT_FAILURE);
 }
 
