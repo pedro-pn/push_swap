@@ -3,14 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppaulo-d < ppaulo-d@student.42sp.org.br    +#+  +:+       +#+        */
+/*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 16:56:20 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/04/21 16:05:31 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/06 21:19:45 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static char	**alloc_s(const char *s, char c);
+static void	s_split(const char *s, char c, int len_s, char **splitted_s);
+
+/** Allocates with malloc(3) and returns an array of strings obtained by
+ * splitting 's' using the character 'c' as a delimiter. The array ends with a
+ * NULL pointer.
+ * @param s The string to be splitted.
+ * @param c The delimiter character.
+ * @return The array of the new strings resulting from the split. NULL if it
+ * fails to allocate memory.*/
+char	**ft_split(const char *s, char c)
+{
+	char	**splitted_s;
+	int		len_s;
+
+	splitted_s = alloc_s(s, c);
+	if (!splitted_s)
+		return (NULL);
+	len_s = (int) ft_strlen(s);
+	s_split(s, c, len_s, splitted_s);
+	return (splitted_s);
+}
 
 static char	**alloc_s(const char *s, char c)
 {
@@ -64,17 +87,4 @@ static void	s_split(const char *s, char c, int len_s, char **splitted_s)
 		index_s++;
 	}
 	*splitted_s = NULL;
-}
-
-char	**ft_split(const char *s, char c)
-{
-	char	**splitted_s;
-	int		len_s;
-
-	splitted_s = alloc_s(s, c);
-	if (!splitted_s)
-		return (NULL);
-	len_s = (int) ft_strlen(s);
-	s_split(s, c, len_s, splitted_s);
-	return (splitted_s);
 }

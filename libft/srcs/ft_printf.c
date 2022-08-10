@@ -1,17 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppaulo-d < ppaulo-d@student.42sp.org.br    +#+  +:+       +#+        */
+/*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:27:39 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/05/27 16:41:24 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/07 17:19:09 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/** This function writes to STDOUT a formatted string according to the format
+ * parameter.
+ * @param format A string made up of characters (except '%') which can be
+ * formatted accordingly to the arguments given in ft_printf.
+ * @return The number of characters written in stdout.
+ * */
 int	ft_printf(const char *format, ...)
 {
 	va_list	args;

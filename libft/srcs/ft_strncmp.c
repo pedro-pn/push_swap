@@ -3,15 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppaulo-d < ppaulo-d@student.42sp.org.br    +#+  +:+       +#+        */
+/*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 23:45:30 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/04/20 01:07:12 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/07 15:35:15 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/** This functions compares the first n bytes of two strings pointed to by s1
+ * and s2.
+ * @param s1 First string to compare.
+ * @param s2 Second string to compare.
+ * @param n The number of bytes to compare.
+ * @return 0 if both strings are equal, a positive integer if s1 is larger than
+ * s2, and a negative integer if s1 is shorter than s2.
+ * */
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	counter;

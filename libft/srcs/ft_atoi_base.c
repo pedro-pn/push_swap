@@ -6,11 +6,52 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 21:38:00 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/07/07 00:05:40 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/07 16:02:31 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static int	base_index(char n, char *base);
+static int	get_base(char *base);
+static int	power(int base, int n);
+static char	*input_check(char *str, char *base);
+
+/** This function converts the first portion of the string pointed to by str
+ * into an integer. The portion to be converted in str may be in any given base,
+ * since base does not contain repeated characteres and the '+' '-' symbols.
+ * @param str The string to be converted.
+ * @param base The string representing the base of the number in str.
+ * @return The converted integer or 0 on error.
+ * */
+int	ft_atoi_base(char *str, char *base)
+{
+	int		nbr;
+	int		base_n;
+	int		str_len;
+	int		counter;
+	char	*nptr;
+
+	if (!str || !base)
+		return (0);
+	nbr = 0;
+	base_n = get_base(base);
+	counter = -1;
+	nptr = input_check(str, base);
+	str_len = ft_strlen(nptr);
+	while (counter++, str_len--, str_len >= 0)
+	{
+		nbr += power(base_n, counter) * base_index(nptr[str_len], base);
+		if (!ft_strchr(base, nptr[str_len]) && str_len != 0)
+		{
+			nbr = 0;
+			counter = -1;
+		}
+	}
+	if (nptr[str_len + 1] == '-')
+		return (-nbr);
+	return (nbr);
+}
 
 static int	base_index(char n, char *base)
 {
@@ -84,33 +125,4 @@ static char	*input_check(char *str, char *base)
 		return (str);
 	}
 	return ("0");
-}
-
-int	ft_atoi_base(char *str, char *base)
-{
-	int		nbr;
-	int		base_n;
-	int		str_len;
-	int		counter;
-	char	*nptr;
-
-	if (!str || !base)
-		return (0);
-	nbr = 0;
-	base_n = get_base(base);
-	counter = -1;
-	nptr = input_check(str, base);
-	str_len = ft_strlen(nptr);
-	while (counter++, str_len--, str_len >= 0)
-	{
-		nbr += power(base_n, counter) * base_index(nptr[str_len], base);
-		if (!ft_strchr(base, nptr[str_len]) && str_len != 0)
-		{
-			nbr = 0;
-			counter = -1;
-		}
-	}
-	if (nptr[str_len + 1] == '-')
-		return (-nbr);
-	return (nbr);
 }

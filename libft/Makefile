@@ -47,7 +47,7 @@ fclean: clean
 		@ echo "${L_BLUE}Libft deleted!${NC}"
 
 norma:
-		@ norminette ${SRCS} includes/*
+		@ norminette ${SRCS} include/*
 
 re: fclean all
 

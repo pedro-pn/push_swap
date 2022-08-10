@@ -3,14 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppaulo-d < ppaulo-d@student.42sp.org.br    +#+  +:+       +#+        */
+/*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 00:53:11 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/06/16 01:25:09 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/07 17:32:16 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static void	check_buffer(int fd, char *buffer, char ***s_buffer);
+static void	fill_buffer(int fd, char **s_buffer);
+static char	*fill_line(char *s_buffer, char **line);
+
+/** This function reads and return a line from a file descriptor.
+ * @param fd The file descriptor from which to read.
+ * @return On success, it returns the line read. The line string is allocated
+ * with malloc(3). NULL is returned on error or EOF.
+ * */
+char	*get_next_line(int fd)
+{
+	static char	*s_buffer[1500];
+	char		*line;
+
+	line = NULL;
+	if (fd < 0 || BUFFER_SIZE < 1)
+		return (NULL);
+	fill_buffer(fd, &s_buffer[fd]);
+	s_buffer[fd] = fill_line(s_buffer[fd], &line);
+	if (ft_strlen(line) == 0)
+	{
+		free(line);
+		free(s_buffer[fd]);
+		s_buffer[fd] = NULL;
+		return (NULL);
+	}
+	return (line);
+}
 
 static void	check_buffer(int fd, char *buffer, char ***s_buffer)
 {
@@ -95,24 +124,4 @@ static char	*fill_line(char *s_buffer, char **line)
 	new_sbuffer = ft_substr(s_buffer, index, ft_strlen(s_buffer) - index);
 	free(s_buffer);
 	return (new_sbuffer);
-}
-
-char	*get_next_line(int fd)
-{
-	static char	*s_buffer[1500];
-	char		*line;
-
-	line = NULL;
-	if (fd < 0 || BUFFER_SIZE < 1)
-		return (NULL);
-	fill_buffer(fd, &s_buffer[fd]);
-	s_buffer[fd] = fill_line(s_buffer[fd], &line);
-	if (ft_strlen(line) == 0)
-	{
-		free(line);
-		free(s_buffer[fd]);
-		s_buffer[fd] = NULL;
-		return (NULL);
-	}
-	return (line);
 }
