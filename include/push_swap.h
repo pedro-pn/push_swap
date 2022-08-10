@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 14:15:57 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/08/10 11:51:14 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/10 14:00:27 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define NOTDIGIT 2
 # define INTOVER 3
 # define EDUPLI 4
+# define FALLOC 5
 # define LESS 0
 # define GREATER 1
 
@@ -43,5 +44,6 @@ void	chunck_a(t_list **stack_a, t_list **stack_b, int *array, int len);
 int		mid_point_2(t_list **stack_a, t_list **stack_b, int *array, int len);
 int		check_stack(t_list *stack, int middle, int op);
 void	sort_chunk_2(t_list **stack_a, t_list **stack_b, int len, int count);
+int		check_error(t_list **stack_a, t_list **stack_b, int *array);
 
 #endif

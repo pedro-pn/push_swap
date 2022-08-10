@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 20:11:05 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/08/10 11:51:32 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/10 13:44:30 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	sort_chunk(t_list **stack_a, t_list **stack_b, int len)
 		chunk_b = sort_array(*stack_b, len);
 		split_stack(stack_a, stack_b, chunk_a, ft_lstsize(*stack_a));
 		r_split_stack(stack_a, stack_b, chunk_b, len);
-		free(chunk_b);
+		if (chunk_b)
+			free(chunk_b);
 	}
 	else
 	{

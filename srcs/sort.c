@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 12:42:29 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/08/08 17:09:06 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/10 14:30:59 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	*sort_array(t_list *stack_a, int length)
 	int	index;
 	int	flag;
 
+	if (!stack_a)
+		return (NULL);
 	array = get_array(stack_a, length);
 	if (!array)
 		return (NULL);
