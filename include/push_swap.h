@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 14:15:57 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/08/10 15:10:00 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/10 19:00:44 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,7 @@ int		check_stack(t_list *stack, int middle, int op);
 void	sort_chunk_2(t_list **stack_a, t_list **stack_b, int len, int count);
 int		check_error(t_list **stack_a, t_list **stack_b, int *array);
 int		create_node(t_list **stack_a, char *argv);
+int		is_sorted(t_list *stack_a, t_list *stack_b);
+int		check_len(t_list **stack_a, t_list **stack_b, int len);
 
 #endif

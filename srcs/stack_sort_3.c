@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 21:43:22 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/08/10 11:31:47 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/10 19:04:25 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,32 @@ int	mid_point_2(t_list **stack_a, t_list **stack_b, int *array, int len)
 	}
 	restore_stack(stack_a, ra_count, "rra");
 	return (push_count);
+}
+
+int	is_sorted(t_list *stack_a, t_list *stack_b)
+{
+	if (stack_b)
+		return (0);
+	while (stack_a->next)
+	{
+		if (*(int *)stack_a->content > *(int *)stack_a->next->content)
+			return (0);
+		stack_a = stack_a->next;
+	}
+	return (1);
+}
+
+int	check_len(t_list **stack_a, t_list **stack_b, int len)
+{
+	if (len > 3)
+		return (0);
+	while (!is_sorted(*stack_a, NULL))
+	{
+		if (*((int *)(*stack_a)->content)
+			> *((int *)(*stack_a)->next->content))
+			swap(stack_a, "sa");
+		else
+			reverse_rotate(stack_a, "rra");
+	}
+	return (1);
 }

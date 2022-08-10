@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 13:34:29 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/08/10 13:48:07 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/10 19:03:18 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ void	split_stack(t_list **stack_a, t_list **stack_b, int *array, int len)
 	int	middle;
 	int	push_count;
 
-	if (check_error(stack_a, stack_b, array))
+	if (check_error(stack_a, stack_b, array) || is_sorted(*stack_a, *stack_b))
 		return ;
 	middle = array[len / 2];
+	if (check_len(stack_a, stack_b, len))
+		return ;
 	push_count = mid_point(stack_a, stack_b, array, len);
 	free(array);
 	array = NULL;
@@ -65,11 +67,13 @@ int	check_stack(t_list *stack, int middle, int op)
 
 static int	mid_point(t_list **stack_a, t_list **stack_b, int *array, int len)
 {
-	int	push_count;
-	int	middle;
+	int		push_count;
+	int		middle;
+	t_list	*last;
 
 	push_count = 0;
 	middle = array[len / 2];
+	last = ft_lstlast(*stack_a);
 	while (check_stack(*stack_a, middle, LESS))
 	{
 		if (*((int *)(*stack_a)->content) < middle)
@@ -77,6 +81,8 @@ static int	mid_point(t_list **stack_a, t_list **stack_b, int *array, int len)
 			push(stack_b, stack_a, "pb");
 			push_count++;
 		}
+		else if (*((int *)last->content) < middle)
+			reverse_rotate(stack_a, "rra");
 		else
 			rotate(stack_a, "ra");
 	}
