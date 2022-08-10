@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 21:40:36 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/07/27 13:38:12 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/10 11:48:40 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	push(t_list **dest, t_list **src, char *id)
 	t_list	*temp;
 	t_list	*node;
 	int		*content;
-	
+
 	if (id)
 		ft_printf("%s\n", id);
 	if (!*src)

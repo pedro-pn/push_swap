@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 14:15:57 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/08/10 11:31:11 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/10 11:51:14 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ void	ss(t_list **stack_a, t_list **stack_b);
 void	rr(t_list **stack_a, t_list **stack_b);
 void	rrr(t_list **stack_a, t_list **stack_b);
 int		*sort_array(t_list *stack_a, int length);
-void 	split_stack(t_list **stack_a, t_list **stack_b, int *array, int argc);
+void	split_stack(t_list **stack_a, t_list **stack_b, int *array, int argc);
 void	sort_chunk(t_list **stack_a, t_list **stack_b, int len);
-void	rev_split_stack(t_list **stack_a, t_list **stack_b, int *array, int len);
-int		rev_len_checker(t_list **stack_a, t_list **stack_b, int len);
-int		rev_mid_point(t_list **stack_a, t_list **stack_b, int *array, int len);
-int		rev_check_stack(t_list *stack, int middle);
+void	r_split_stack(t_list **stack_a, t_list **stack_b, int *array, int len);
+int		r_len_checker(t_list **stack_a, t_list **stack_b, int len);
+int		r_mid_point(t_list **stack_a, t_list **stack_b, int *array, int len);
+int		r_check_stack(t_list *stack, int middle);
 void	restore_stack(t_list **stack, int count, char *rule);
 void	chunck_a(t_list **stack_a, t_list **stack_b, int *array, int len);
 int		mid_point_2(t_list **stack_a, t_list **stack_b, int *array, int len);

@@ -6,15 +6,15 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 13:34:29 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/08/10 11:34:56 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/10 11:50:45 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int mid_point(t_list **stack_a, t_list **stack_b, int *array, int len);
+static int	mid_point(t_list **stack_a, t_list **stack_b, int *array, int len);
 
-void split_stack(t_list **stack_a, t_list **stack_b, int *array, int len)
+void	split_stack(t_list **stack_a, t_list **stack_b, int *array, int len)
 {
 	int	middle;
 	int	push_count;
@@ -26,7 +26,7 @@ void split_stack(t_list **stack_a, t_list **stack_b, int *array, int len)
 	sort_chunk(stack_a, stack_b, push_count);
 }
 
-void	rev_split_stack(t_list **stack_a, t_list **stack_b, int *array, int len)
+void	r_split_stack(t_list **stack_a, t_list **stack_b, int *array, int len)
 {
 	int	push_count;
 	int	*array_a;
@@ -34,9 +34,9 @@ void	rev_split_stack(t_list **stack_a, t_list **stack_b, int *array, int len)
 
 	array_a = NULL;
 	array_b = NULL;
-	if (rev_len_checker(stack_a, stack_b, len))
+	if (r_len_checker(stack_a, stack_b, len))
 		return ;
-	push_count = rev_mid_point(stack_a, stack_b, array, len);
+	push_count = r_mid_point(stack_a, stack_b, array, len);
 	sort_chunk_2(stack_a, stack_b, push_count, len - push_count);
 }
 
@@ -61,7 +61,7 @@ int	check_stack(t_list *stack, int middle, int op)
 	return (0);
 }
 
-static int mid_point(t_list **stack_a, t_list **stack_b, int *array, int len)
+static int	mid_point(t_list **stack_a, t_list **stack_b, int *array, int len)
 {
 	int	push_count;
 	int	middle;
