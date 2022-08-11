@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 13:34:29 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/08/10 19:03:18 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/10 22:45:41 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,9 @@ static int	mid_point(t_list **stack_a, t_list **stack_b, int *array, int len)
 {
 	int		push_count;
 	int		middle;
-	t_list	*last;
 
 	push_count = 0;
 	middle = array[len / 2];
-	last = ft_lstlast(*stack_a);
 	while (check_stack(*stack_a, middle, LESS))
 	{
 		if (*((int *)(*stack_a)->content) < middle)
@@ -81,7 +79,7 @@ static int	mid_point(t_list **stack_a, t_list **stack_b, int *array, int len)
 			push(stack_b, stack_a, "pb");
 			push_count++;
 		}
-		else if (*((int *)last->content) < middle)
+		else if (*((int *)ft_lstlast(*stack_a)->content) < middle)
 			reverse_rotate(stack_a, "rra");
 		else
 			rotate(stack_a, "ra");

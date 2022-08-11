@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 21:43:22 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/08/10 19:04:25 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/10 22:43:55 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	mid_point_2(t_list **stack_a, t_list **stack_b, int *array, int len)
 			push(stack_b, stack_a, "pb");
 			push_count++;
 		}
+		else if (*((int *)ft_lstlast(*stack_a)->content) < middle)
+			reverse_rotate(stack_a, "rra");
 		else
 		{
 			rotate(stack_a, "ra");
