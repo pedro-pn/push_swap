@@ -13,7 +13,7 @@ SRCS = ${addprefix ${SRCS_PATH}/, ${SOURCES}}
 OBJS = ${addprefix ${OBJS_PATH}/, ${SOURCES:.c=.o}}
 BOBJS = ${addprefix ${BOBJS_PATH}/, ${BSOURCES:.c=.o}}
 CC = gcc
-FLAGS =  -g
+FLAGS =  -Werror -Wextra -Wall
 ARG := $(shell shuf -i 1-500)
 TESTER = checker_linux
 

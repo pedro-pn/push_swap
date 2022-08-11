@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 21:43:22 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/08/10 22:43:55 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/11 15:48:05 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	is_sorted(t_list *stack_a, t_list *stack_b)
 	return (1);
 }
 
-int	check_len(t_list **stack_a, t_list **stack_b, int len)
+int	check_len(t_list **stack_a, int len)
 {
 	if (len > 3)
 		return (0);

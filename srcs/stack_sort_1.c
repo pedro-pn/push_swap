@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 13:34:29 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/08/10 22:45:41 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/11 15:47:19 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,10 @@ static int	mid_point(t_list **stack_a, t_list **stack_b, int *array, int len);
 
 void	split_stack(t_list **stack_a, t_list **stack_b, int *array, int len)
 {
-	int	middle;
 	int	push_count;
 
 	if (check_error(stack_a, stack_b, array) || is_sorted(*stack_a, *stack_b))
 		return ;
-	middle = array[len / 2];
 	if (check_len(stack_a, stack_b, len))
 		return ;
 	push_count = mid_point(stack_a, stack_b, array, len);
