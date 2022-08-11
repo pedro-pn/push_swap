@@ -4,3 +4,6 @@ push_swap
 teste.c
 libft/libft.a
 checker_linux
+objs_bonus/
+checker
+
