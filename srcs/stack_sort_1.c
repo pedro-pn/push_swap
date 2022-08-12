@@ -20,7 +20,7 @@ void	split_stack(t_list **stack_a, t_list **stack_b, int *array, int len)
 
 	if (check_error(stack_a, stack_b, array) || is_sorted(*stack_a, *stack_b))
 		return ;
-	if (check_len(stack_a, stack_b, len))
+	if (check_len(stack_a, len))
 		return ;
 	push_count = mid_point(stack_a, stack_b, array, len);
 	free(array);
