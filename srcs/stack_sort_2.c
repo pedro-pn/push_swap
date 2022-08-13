@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 20:11:05 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/08/10 22:39:21 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/12 22:02:29 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,8 @@ int	r_mid_point(t_list **stack_a, t_list **stack_b, int *array, int len)
 			rb_count++;
 		}
 	}
-	restore_stack(stack_b, rb_count, "rrb");
+	if (!(ft_lstsize(*stack_b) <= len))
+		restore_stack(stack_b, rb_count, "rrb");
 	return (push_count);
 }
 
