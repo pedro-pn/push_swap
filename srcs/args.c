@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 14:16:54 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/08/10 15:13:54 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/14 00:29:53 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static int	check_max(char *str);
 static int	check_max_2(char *str, int flag);
 static void	check_duplicate(t_list **stack);
 
+/*Checks arguments received and creates a linked list with all arguments
+converted to integers*/
 void	get_args(t_list **stack_a, int argc, char *argv[])
 {
 	int		index;
@@ -43,6 +45,7 @@ void	get_args(t_list **stack_a, int argc, char *argv[])
 	check_duplicate(stack_a);
 }
 
+/* Checks if the argument passed by the user represents a valid integer.*/
 static int	check_nums(char *str)
 {
 	int	index;
@@ -61,6 +64,7 @@ static int	check_nums(char *str)
 	return (0);
 }
 
+/* Checks if the number passed as string in argv is out of int type range.*/
 static int	check_max_2(char *str, int flag)
 {
 	int		n;
@@ -79,6 +83,7 @@ static int	check_max_2(char *str, int flag)
 	return (0);
 }
 
+/* Checks if the number passed as a string in argv is out of int type range.*/
 static int	check_max(char *str)
 {
 	int	flag;
@@ -99,6 +104,7 @@ static int	check_max(char *str)
 	return (ret);
 }
 
+/* Checks if there're duplicate numbers in the stack.*/
 static void	check_duplicate(t_list **stack)
 {
 	t_list	*temp;

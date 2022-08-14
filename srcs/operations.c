@@ -6,12 +6,13 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 21:40:36 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/08/10 11:48:40 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/14 00:47:47 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/* Swaps the first two elements of the stack.*/
 void	swap(t_list **stack, char *id)
 {
 	void	*temp;
@@ -25,6 +26,7 @@ void	swap(t_list **stack, char *id)
 	(*stack)->next->content = temp;
 }
 
+/* Passes the first element of the stack dest to the stack b.*/
 void	push(t_list **dest, t_list **src, char *id)
 {
 	t_list	*temp;
@@ -47,6 +49,8 @@ void	push(t_list **dest, t_list **src, char *id)
 	ft_lstdelone(temp, free);
 }
 
+/* Shifts all elements of the stack up. That means the first element ends up as
+the last one.*/
 void	rotate(t_list **stack, char *id)
 {
 	t_list	*temp;
@@ -63,6 +67,8 @@ void	rotate(t_list **stack, char *id)
 	}
 }
 
+/* Shifts all elements of the stack down. That means the last element ends up
+as the first one.*/
 void	reverse_rotate(t_list **stack, char *id)
 {
 	t_list	*temp;

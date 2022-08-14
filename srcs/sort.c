@@ -6,24 +6,25 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 12:42:29 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/08/10 14:30:59 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/14 00:49:57 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	*get_array(t_list *stack_a, int stack_len);
+static int	*get_array(t_list *stack, int len);
 static void	swap_array(int *a, int *b);
 
-int	*sort_array(t_list *stack_a, int length)
+/* Sorts an array using bubble sort algorithm.*/
+int	*sort_array(t_list *stack, int length)
 {
 	int	*array;
 	int	index;
 	int	flag;
 
-	if (!stack_a)
+	if (!stack)
 		return (NULL);
-	array = get_array(stack_a, length);
+	array = get_array(stack, length);
 	if (!array)
 		return (NULL);
 	index = 0;
@@ -44,25 +45,27 @@ int	*sort_array(t_list *stack_a, int length)
 	return (array);
 }
 
-static int	*get_array(t_list *stack_a, int stack_len)
+/* Fills the array with size number values of the stack.*/
+static int	*get_array(t_list *stack, int size)
 {
 	int	*array;
 	int	array_index;
 
-	array = malloc(sizeof(*array) * (stack_len));
+	array = malloc(sizeof(*array) * (size));
 	if (!array)
 		return (NULL);
 	array_index = 0;
-	while (stack_len > 0)
+	while (size > 0)
 	{
-		array[array_index] = *((int *)stack_a->content);
+		array[array_index] = *((int *)stack->content);
 		array_index++;
-		stack_a = stack_a->next;
-		stack_len--;
+		stack = stack->next;
+		size--;
 	}
 	return (array);
 }
 
+/* Swaps two values*/
 static void	swap_array(int *a, int *b)
 {
 	int	temp;

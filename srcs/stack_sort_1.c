@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 13:34:29 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/08/11 15:47:19 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/14 00:54:38 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 static int	mid_point(t_list **stack_a, t_list **stack_b, int *array, int len);
 
-void	split_stack(t_list **stack_a, t_list **stack_b, int *array, int len)
+/* Starts the sorting applying midpoint algorithm in the numbers in the stack_a
+passing them to the stack_b.*/
+void	sort_stack(t_list **stack_a, t_list **stack_b, int *array, int len)
 {
 	int	push_count;
 
@@ -36,7 +38,9 @@ void	split_stack(t_list **stack_a, t_list **stack_b, int *array, int len)
 	sort_chunk(stack_a, stack_b, push_count);
 }
 
-void	r_split_stack(t_list **stack_a, t_list **stack_b, int *array, int len)
+/* Passes the numbers from the stack_b to the stack_a recursively using the
+midpoint algorithm*/
+void	r_sort_stack(t_list **stack_a, t_list **stack_b, int *array, int len)
 {
 	int	push_count;
 
@@ -48,6 +52,7 @@ void	r_split_stack(t_list **stack_a, t_list **stack_b, int *array, int len)
 	sort_chunk_2(stack_a, stack_b, push_count, len - push_count);
 }
 
+/* Applies the midpoint algorithm recursively in the numbers in the stack_a*/
 void	chunck_a(t_list **stack_a, t_list **stack_b, int *array, int len)
 {
 	int	push_count;
@@ -58,6 +63,8 @@ void	chunck_a(t_list **stack_a, t_list **stack_b, int *array, int len)
 	sort_chunk_2(stack_a, stack_b, len - push_count, push_count);
 }
 
+/* Verifies if there're still numbers less or greater than the middle value in
+the stack.*/
 int	check_stack(t_list *stack, int middle, int op)
 {
 	while (stack != NULL)
@@ -71,6 +78,7 @@ int	check_stack(t_list *stack, int middle, int op)
 	return (0);
 }
 
+/* Passes all values less than the middle value of the stack_a to the stack_b*/
 static int	mid_point(t_list **stack_a, t_list **stack_b, int *array, int len)
 {
 	int		push_count;

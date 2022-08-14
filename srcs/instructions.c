@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 16:03:33 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/08/10 16:22:07 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/14 00:36:33 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
  * algorithm.
  * */
 
+/* Swaps first two elements of stack_a and stack_b at the same time.*/
 void	ss(t_list **stack_a, t_list **stack_b)
 {
 	swap(stack_a, NULL);
@@ -25,6 +26,7 @@ void	ss(t_list **stack_a, t_list **stack_b)
 	ft_printf("ss\n");
 }
 
+/* Shifts up all numbers of stack_a and stack_b.*/
 void	rr(t_list **stack_a, t_list **stack_b)
 {
 	rotate(stack_a, NULL);
@@ -32,6 +34,7 @@ void	rr(t_list **stack_a, t_list **stack_b)
 	ft_printf("rr\n");
 }
 
+/* Shifts down all numbers of stack_a and stack_b.*/
 void	rrr(t_list **stack_a, t_list **stack_b)
 {
 	reverse_rotate(stack_a, NULL);

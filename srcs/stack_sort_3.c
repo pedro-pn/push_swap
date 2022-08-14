@@ -6,12 +6,14 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 21:43:22 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/08/11 15:48:05 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/14 00:58:04 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/* Applies midpoint algorithm in the chunks of stack_a without losing the start
+configuration.*/
 int	mid_point_2(t_list **stack_a, t_list **stack_b, int *array, int len)
 {
 	int	middle;
@@ -40,6 +42,7 @@ int	mid_point_2(t_list **stack_a, t_list **stack_b, int *array, int len)
 	return (push_count);
 }
 
+/* Checks if the stack_a is all sorted.*/
 int	is_sorted(t_list *stack_a, t_list *stack_b)
 {
 	if (stack_b)
@@ -53,6 +56,7 @@ int	is_sorted(t_list *stack_a, t_list *stack_b)
 	return (1);
 }
 
+/* Sorts last three or less elements of stack_a.*/
 int	check_len(t_list **stack_a, int len)
 {
 	if (len > 3)
