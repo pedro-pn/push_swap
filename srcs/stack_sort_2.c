@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 20:11:05 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/08/14 00:56:15 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/14 23:36:11 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	sort_chunk_2(t_list **stack_a, t_list **stack_b, int rest, int count)
 	chunk_a = sort_array(*stack_a, rest);
 	chunk_b = sort_array(*stack_b, count);
 	if (rest > 2)
-		chunck_a(stack_a, stack_b, chunk_a, rest);
+		sort_chunk_a(stack_a, stack_b, chunk_a, rest);
 	if (rest == 2)
 	{
 		if (*((int *)(*stack_a)->content) > *((int *)(*stack_a)->next->content))

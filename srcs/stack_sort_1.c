@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 13:34:29 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/08/14 00:54:38 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/14 23:34:26 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	r_sort_stack(t_list **stack_a, t_list **stack_b, int *array, int len)
 }
 
 /* Applies the midpoint algorithm recursively in the numbers in the stack_a*/
-void	chunck_a(t_list **stack_a, t_list **stack_b, int *array, int len)
+void	sort_chunk_a(t_list **stack_a, t_list **stack_b, int *array, int len)
 {
 	int	push_count;
 

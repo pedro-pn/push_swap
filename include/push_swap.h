@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 14:15:57 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/08/13 23:26:46 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/14 23:35:24 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		r_len_checker(t_list **stack_a, t_list **stack_b, int len);
 int		r_mid_point(t_list **stack_a, t_list **stack_b, int *array, int len);
 int		r_check_stack(t_list *stack, int middle);
 void	restore_stack(t_list **stack, int count, char *rule);
-void	chunck_a(t_list **stack_a, t_list **stack_b, int *array, int len);
+void	sort_chunk_a(t_list **stack_a, t_list **stack_b, int *array, int len);
 int		mid_point_2(t_list **stack_a, t_list **stack_b, int *array, int len);
 int		check_stack(t_list *stack, int middle, int op);
 void	sort_chunk_2(t_list **stack_a, t_list **stack_b, int len, int count);
