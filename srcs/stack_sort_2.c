@@ -6,14 +6,14 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 20:11:05 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/08/14 23:36:11 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/15 11:34:11 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /* Applies the sorting algorithm in the leftover values of stack_a and calls
-the reverse sorting algorithm to the numbers passed to stack_b.*/ 
+the reverse sorting algorithm to the numbers passed to stack_b.*/
 void	sort_chunk(t_list **stack_a, t_list **stack_b, int len)
 {
 	int	*chunk_a;
@@ -43,7 +43,7 @@ void	sort_chunk(t_list **stack_a, t_list **stack_b, int len)
 }
 
 /* Applies the sorting algorithm in the leftover values of stack_a/b and calls
-the sorting algorithm to the numbers passed to stack_b/a.*/ 
+the sorting algorithm to the numbers passed to stack_b/a.*/
 void	sort_chunk_2(t_list **stack_a, t_list **stack_b, int rest, int count)
 {
 	int	*chunk_a;
