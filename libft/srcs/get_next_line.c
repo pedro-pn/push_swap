@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 00:53:11 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2022/08/07 17:32:16 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2022/08/17 11:04:20 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
 	fill_buffer(fd, &s_buffer[fd]);
+	if (!s_buffer[fd])
+		return (NULL);
 	s_buffer[fd] = fill_line(s_buffer[fd], &line);
 	if (ft_strlen(line) == 0)
 	{
